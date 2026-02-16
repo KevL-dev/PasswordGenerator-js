@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,51 +10,99 @@
     />
     <title>Password Generator</title>
   </head>
+
   <body>
-    <main>
-      <div class="top-div">
-        <h2>Generated password</h2>
-        <label id="password-display"
-          >Click 'Generate Password' to create a password</label
+    <main class="card" aria-labelledby="app-title">
+      <header class="card__header">
+        <h1 id="app-title">Password Generator</h1>
+
+        <button
+          id="theme-toggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle theme"
         >
-        <i class="bx bx-copy" id="copy-btn"></i>
-        <i class="bx bx-refresh" id="refresh-btn"></i>
-      </div>
-      <div class="charlength-div">
-        <label for="length-slider"
-          >Password Length: <span id="length-value">12</span></label
-        >
-        <input type="range" id="length-slider" min="12" max="32" value="12" />
-      </div>
-      <div class="mid-div">
-        <label class="switch">
-          <input type="checkbox" id="uppercase" checked />
-          <span class="slider"></span>
-          <span class="label-text">Uppercase Letters</span>
-        </label>
-        <br />
-        <label class="switch">
-          <input type="checkbox" id="lowercase" checked />
-          <span class="slider"></span>
-          <span class="label-text">Lowercase Letters</span>
-        </label>
-        <br />
-        <label class="switch">
-          <input type="checkbox" id="numbers" checked />
-          <span class="slider"></span>
-          <span class="label-text">Numbers</span>
-        </label>
-        <br />
-        <label class="switch">
-          <input type="checkbox" id="symbols" checked />
-          <span class="slider"></span>
-          <span class="label-text">Symbols</span>
-        </label>
-      </div>
-      <div class="bot-div">
-        <button id="generate-btn">Generate Password</button>
-      </div>
+          <i class="bx bx-moon" aria-hidden="true"></i>
+        </button>
+      </header>
+
+      <section class="output" aria-label="Generated password">
+        <h2 class="section-title">Generated password</h2>
+
+        <div class="output__row">
+          <output id="password-display" class="password" aria-live="polite">
+            Click "Generate Password" to create a password
+          </output>
+
+          <div class="output__actions" aria-label="Password actions">
+            <button
+              id="copy-btn"
+              class="icon-btn"
+              type="button"
+              aria-label="Copy password"
+            >
+              <i class="bx bx-copy" aria-hidden="true"></i>
+            </button>
+            <button
+              id="refresh-btn"
+              class="icon-btn"
+              type="button"
+              aria-label="Regenerate password"
+            >
+              <i class="bx bx-refresh" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="controls" aria-label="Password settings">
+        <div class="control">
+          <label for="length-slider" class="control__label">
+            Password Length: <span id="length-value">12</span>
+          </label>
+          <input type="range" id="length-slider" min="12" max="32" value="12" />
+        </div>
+
+        <fieldset class="options">
+          <legend class="section-title">Include</legend>
+
+          <label class="switch">
+            <input type="checkbox" id="uppercase" checked />
+            <span class="slider" aria-hidden="true"></span>
+            <span class="label-text">Uppercase Letters</span>
+          </label>
+
+          <label class="switch">
+            <input type="checkbox" id="lowercase" checked />
+            <span class="slider" aria-hidden="true"></span>
+            <span class="label-text">Lowercase Letters</span>
+          </label>
+
+          <label class="switch">
+            <input type="checkbox" id="numbers" checked />
+            <span class="slider" aria-hidden="true"></span>
+            <span class="label-text">Numbers</span>
+          </label>
+
+          <label class="switch">
+            <input type="checkbox" id="symbols" checked />
+            <span class="slider" aria-hidden="true"></span>
+            <span class="label-text">Symbols</span>
+          </label>
+
+          <p id="selection-hint" class="hint" hidden>
+            Please select at least one character type.
+          </p>
+        </fieldset>
+
+        <div class="actions">
+          <button id="generate-btn" type="button">Generate Password</button>
+        </div>
+      </section>
     </main>
+
     <script src="script.js"></script>
   </body>
 </html>
